@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoatVest - Simulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #020617;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .buy {
+      background: #22c55e;
+    }
+    .invite {
+      background: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  GoatVest 🐐 (Simulation Only)
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>💰 Demo Balance: €<span id="balance">1000</span></h2>
+    <p>This is NOT real money. Simulation only.</p>
+  </div>
+
+  <div class="card">
+    <h2>🐐 Your Goats: <span id="goats">0</span></h2>
+    <button class="buy" onclick="buyGoat()">Buy Goat (€50)</button>
+  </div>
+
+  <div class="card">
+    <h2>📈 Earnings: €<span id="earnings">0</span></h2>
+    <p>Each goat earns €5 per click (simulate profit)</p>
+    <button onclick="earnMoney()">Collect Earnings</button>
+  </div>
+
+  <div class="card">
+    <h2>👥 Invite Friends</h2>
+    <p>Invite friends and get €20 demo bonus</p>
+    <button class="invite" onclick="invite()">Invite</button>
+  </div>
+
+</div>
+
+<script>
+  let balance = 1000;
+  let goats = 0;
+  let earnings = 0;
+
+  function updateUI() {
+    document.getElementById('balance').innerText = balance;
+    document.getElementById('goats').innerText = goats;
+    document.getElementById('earnings').innerText = earnings;
+  }
+
+  function buyGoat() {
+    if (balance >= 50) {
+      balance -= 50;
+      goats += 1;
+      updateUI();
+    } else {
+      alert('Not enough balance');
+    }
+  }
+
+  function earnMoney() {
+    let profit = goats * 5;
+    earnings += profit;
+    balance += profit;
+    updateUI();
+  }
+
+  function invite() {
+    balance += 20;
+    alert('You invited a friend! Bonus added.');
+    updateUI();
+  }
+
+  updateUI();
+</script>
+
+</body>
+</html>
